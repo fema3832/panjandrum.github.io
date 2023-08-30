@@ -1,0 +1,82 @@
+.photowrapper > ul {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0!important;
+    margin: 0!important;
+}
+
+.photowrapper > ul > li {
+    min-height: 35vh;
+    height: 35vh;
+    width: auto;
+    min-width: auto;
+    list-style: none;
+    padding: 1vh!important;
+    margin: 0!important;
+}
+
+.photowrapper > ul > li > img {
+    max-height: 100%;
+    min-width: 100%;
+    object-fit: contain;
+    vertical-align: bottom;
+    filter: drop-shadow(0 0 00rem black);
+    cursor: zoom-in;
+}
+
+.photowrapper > ul > li:last-child {
+    flex-grow: 0;
+}
+
+.large {
+    color: #424242; 
+    -webkit-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    -ms-transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+    transition: all .3s ease-in;
+    min-width: auto;
+    min-height: auto;
+    position: fixed;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    background-color: #424242;
+    transform: translate(-50%, -50%);
+    height: 90%;
+}
+
+@media screen and (max-width: 1024px) {
+    .large {
+        max-width: 100%;
+        height: auto;
+        width: auto; /* ie8 */
+    }
+}
+
+#fullscreenImageWraper {
+    background-color: rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 0;
+    -webkit-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    -ms-transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+    transition: all .3s ease-in;
+    top: 0;
+    left: 0;
+    cursor: auto;
+}
+
+#fullscreenImage {
+    cursor: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

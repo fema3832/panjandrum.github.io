@@ -8250,6 +8250,11 @@ textarea.form-control-lg {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 
+.text-white-75 {
+  --bs-text-opacity: 1;
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
 .text-reset {
   --bs-text-opacity: 1;
   color: inherit !important;
@@ -11114,12 +11119,10 @@ body {
   padding-top: 10rem;
   background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
 }
-.about-section p {
-  margin-bottom: 10rem;
-}
 
 .projects-section {
   padding: 10rem 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 75%, #000 100%)
 }
 .projects-section .featured-text {
   padding: 2rem;

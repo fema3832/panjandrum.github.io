@@ -11009,14 +11009,14 @@ body {
 }
 #mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
   outline: none;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.75);
 }
 @media (min-width: 992px) {
   #mainNav {
     padding-top: 0;
     padding-bottom: 0;
     border-bottom: none;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.75);
     transition: background-color 0.3s ease-in-out;
   }
   #mainNav .navbar-brand {

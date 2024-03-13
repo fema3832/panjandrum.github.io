@@ -42,7 +42,9 @@ function enlargeImage(imgElement){
 var imageNodes = document.getElementsByTagName('img');
 for (var i=0; i<imageNodes.length; i++)
 {
-    imageNodes[i].addEventListener('click', function() {
-        enlargeImage(this);
-    });
+    if (imageNodes[i].id != "look") {
+        imageNodes[i].addEventListener('click', function() {
+            enlargeImage(this);
+        });
+    }
 }

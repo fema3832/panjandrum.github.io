@@ -1,6 +1,10 @@
 /* ==========================================================================
 Animation System by Neale Van Fleet from Rogue Amoeba
 ========================================================================== */
+.animate {
+  opacity: 0;
+}
+
 .animate-animation {
     animation-duration: 1s;
     animation-delay: 0s;

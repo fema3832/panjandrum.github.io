@@ -108,6 +108,10 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -8321,6 +8325,10 @@ textarea.form-control-lg {
   background-color: rgba(var(--bs-black-rgb), var(--bs-bg-opacity)) !important;
 }
 
+.bg-black-transparent {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
 .bg-white {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
@@ -11122,18 +11130,21 @@ video#bgVideo {
   width: 100%;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, RGBA(60, 150, 130, 0.3) 0%, rgba(0, 0, 0, 0.3) 60%, RGBA(60, 150, 130, 0.3) 100%);
+  background: linear-gradient(to bottom, RGBA(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 60%, RGBA(0, 0, 0, 0.3) 100%);
+  /* background: linear-gradient(to bottom, RGBA(60, 150, 130, 0.3) 0%, rgba(0, 0, 0, 0.3) 60%, RGBA(60, 150, 130, 0.3) 100%); */
 }
 
 .about-section {
   padding-top: 15rem;
   padding-bottom: 5rem;
-  background:  linear-gradient(to bottom, RGBA(60, 150, 130, 0.3) 0%, rgba(0, 0, 0, 0.8) 25%, rgba(0, 0, 0, 0.8) 75%, RGBA(60, 150, 130, 0.3) 100%);
+  background:  linear-gradient(to bottom, RGBA(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 25%, rgba(0, 0, 0, 0.8) 75%, RGBA(0, 0, 0, 0.3) 100%);
+  /* background:  linear-gradient(to bottom, RGBA(60, 150, 130, 0.3) 0%, rgba(0, 0, 0, 0.8) 25%, rgba(0, 0, 0, 0.8) 75%, RGBA(60, 150, 130, 0.3) 100%); */
 }
 
 .projects-section {
   padding: 10rem 0;
-  background: linear-gradient(rgba(60, 150, 130, 0.3) 0%, rgba(0, 0, 0, 0.8) 80%);
+  background: linear-gradient(rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 80%);
+  /* background: linear-gradient(rgba(60, 150, 130, 0.3) 0%, rgba(0, 0, 0, 0.8) 80%); */
 }
 .projects-section .featured-text {
   padding: 2rem;
@@ -11165,6 +11176,7 @@ video#bgVideo {
 
 .contact-section {
   padding-top: 3rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.8) 100%);
 }
 .contact-section .card {
   border: 0;
@@ -11202,7 +11214,8 @@ video#bgVideo {
 }
 
 .footer {
-  padding: 3rem 0;
+  padding: 2em 0;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 /* ==========================================================================
@@ -11472,3 +11485,4 @@ Animation System by Neale Van Fleet from Rogue Amoeba
       animation: none !important;
     }
   }
+  

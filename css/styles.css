@@ -81,6 +81,7 @@
   --bs-link-hover-color: rgb(140,140,140);
   --bs-code-color: #d63384;
   --bs-highlight-bg: #faf4e0;
+  --bs-bold-color: rgb(180, 180, 180);
 }
 
 *,
@@ -225,6 +226,7 @@ blockquote {
 b,
 strong {
   font-weight: bolder;
+  color: var(--bs-bold-color)
 }
 
 small, .small {

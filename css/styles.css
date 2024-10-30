@@ -11132,7 +11132,8 @@ video#bgVideo {
   width: 100%;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, RGBA(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 60%, RGBA(0, 0, 0, 0.3) 100%);
+  /* background: linear-gradient(to bottom, RGBA(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 60%, RGBA(0, 0, 0, 0.3) 100%); */
+  background: linear-gradient(to top, RGBA(0, 0, 0, 0.3) 70%,  RGBA(0, 0, 0, 0.8) 100%);
   /* background: linear-gradient(to bottom, RGBA(60, 150, 130, 0.3) 0%, rgba(0, 0, 0, 0.3) 60%, RGBA(60, 150, 130, 0.3) 100%); */
 }
 
@@ -11178,7 +11179,9 @@ video#bgVideo {
 
 .contact-section {
   padding-top: 3rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.8) 100%);
+  /* background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 60%, rgba(0, 0, 0, 0.8) 100%); */
+  /* background: linear-gradient(to bottom, RGBA(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 1) 70%, RGBA(0, 0, 0, 0.9) 100%); */
+  background: linear-gradient(to top, RGBA(0, 0, 0, 1) 30%,  RGBA(0, 0, 0, 0.8) 100%);
 }
 .contact-section .card {
   border: 0;

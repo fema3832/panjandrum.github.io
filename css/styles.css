@@ -11135,7 +11135,9 @@ video#bgVideo {
 
 .projects-section {
   padding: 10rem 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 80%);
+  background: linear-gradient(rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+  /* background: linear-gradient(rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 10%, rgba(0, 0, 0, 0.8) 100%); */
+
   /* background: linear-gradient(rgba(60, 150, 130, 0.3) 0%, rgba(0, 0, 0, 0.8) 80%); */
 }
 .projects-section .featured-text {

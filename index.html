@@ -14,6 +14,25 @@
 		<meta name="distribution" content="global">
 		<meta name="copyright" content="Panjandrum">
 
+        <link rel="preload" fetchpriority="high" href="/assets/img/panjandrum_feher.webp" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/tech/20240704-_MG_2755-WEB.webp"  as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/tech/20240704-_MG_2735-WEB.webp" as="image">
+        <link rel="preload" fetchpriority="high" href="assets/img/temp.webp" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/rcf.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/rcftt.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/electro-voice.svg"  as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/sennheiser.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/shure.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/db.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/agk.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/beyerdynamic.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/audio-technica.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/soundcraft.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/shehds.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/chamsys2.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/involight.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="/assets/logo/prolyte.svg" as="image">
+        <link rel="preload" fetchpriority="high" href="../assets/background.mp4" as="image">
 		<!-- Primary Meta Tags -->
 		<meta name="title" content="Panjandrum - Sound & Light" />
 		<meta name="description" content="Rendezvények, koncertek, családi napok, és egyéb más rendezvények profi technikai megvalósítása, több évtizedes tapasztalattal." />
@@ -23,14 +42,14 @@
 		<meta property="og:url" content="https://panjandrum.hu/" />
 		<meta property="og:title" content="Panjandrum - Sound & Light" />
 		<meta property="og:description" content="Rendezvények, koncertek, családi napok, és egyéb más rendezvények profi technikai megvalósítása, több évtizedes tapasztalattal." />
-		<meta property="og:image" content="https://panjandrum.hu/assets/img/background.jpg" />
+		<meta property="og:image" content="https://panjandrum.hu/assets/img/background.webp" />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content="https://panjandrum.hu/" />
 		<meta property="twitter:title" content="Panjandrum - Sound & Light" />
 		<meta property="twitter:description" content="Rendezvények, koncertek, családi napok, és egyéb más rendezvények profi technikai megvalósítása, több évtizedes tapasztalattal." />
-		<meta property="twitter:image" content="https://panjandrum.hu/assets/img/background.jpg" />
+		<meta property="twitter:image" content="https://panjandrum.hu/assets/img/background.webp" />
 
         <!-- <meta name="description" content="Rendezvények, koncertek, családi napok, és egyéb más rendezvények profi technikai megvalósítása, több évtizedes  -->
         <!-- <meta name="author" content="Fejes Máté" /> -->
@@ -41,44 +60,10 @@
         <title>Panjandrum - Sound & Light</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <link rel="apple-touch-icon" href="/assets/favicon.ico" />
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5YLLZJ5QPJ"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-5YLLZJ5QPJ');
-        </script>
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "Event",
-                "name": "Panjandrum - Sound & Light",
-                "startDate": "2024-01-01T20:00",
-                "endDate": "2024-01-02T02:00",
-                "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-                "eventStatus": "https://schema.org/EventScheduled",
-                "location": {
-                "@type": "Place",
-                "name": "Magyarország",
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Tata",
-                    "addressCountry": "HU"
-                }
-                },
-                "organizer": {
-                "@type": "Organization",
-                "name": "Panjandrum",
-                "url": "https://panjandrum.hu/"
-                }
-            }
-        </script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="/css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
         <video id="bgVideo" autoplay="" loop="" muted="" playsinline="">
@@ -88,7 +73,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand text-white" href="#page-top"><img src="/assets/img/panjandrum_feher.png" alt="Panjandrum logo" style="width: 8em"></a>
+                <a class="navbar-brand text-white" href="#page-top"><img src="/assets/img/panjandrum_feher.webp" alt="Panjandrum logo" style="width: 8em"></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -110,7 +95,7 @@
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center" style="padding-top: 40px;">
                 <div class="d-flex justify-content-center">
                     <div class="text-center animate">
-                        <h1 class="mx-auto my-0 text-uppercase"><img src="/assets/img/panjandrum_feher.png" style="width: 7em;" alt="Panjandrum - Sound & Light" title="Panjandrum - Sound & Light"></h1>
+                        <h1 class="mx-auto my-0 text-uppercase"><img src="/assets/img/panjandrum_feher.webp" style="width: 7em;" alt="Panjandrum - Sound & Light" title="Panjandrum - Sound & Light"></h1>
                         <!-- <h2 class="text-white mx-auto px-2 fs-22">
                             Sound & Light
                         </h2> -->
@@ -127,7 +112,7 @@
         <section class="about-section justify-content-center align-items-center text-center" id="about">
             <div class="container px-4 px-lg-5 justify-content-center align-items-center text-center">
                 <div class="row gx-4 gx-lg-5 justify-content-center  justify-content-center align-items-center text-center d-flex" >
-                    <div class="col-lg-3 col-md-12 col-sm-12 d-flex animate justify-content-center align-items-center"><img src="/assets/tech/20240704-_MG_2755-WEB.jpg" alt="Rendezvény fotó" style="border-radius: 15px;" width="300" height="auto" alt=""></div>
+                    <div class="col-lg-3 col-md-12 col-sm-12 d-flex animate justify-content-center align-items-center"><img src="/assets/tech/20240704-_MG_2755-WEB.webp" alt="Rendezvény fotó" style="border-radius: 15px;" width="300" height="auto" alt=""></div>
                     <div class="col-lg-6 col-md-12 col-sm-12 d-flex animate justify-content-center align-items-center mt-4 mt-lg-0" style="flex-direction: column;">
                         <h2 class="text-white mb-4 fs-1 text-decoration-underline">Rólunk</h2>
                         <div class="text-white px-5 ft-1 fs-6">
@@ -139,9 +124,9 @@
                             <p class="text-white">Nagy, különleges rendezvény lebonyolítása is megoldott nagyobb partnereink segítségével. Szívesen segítünk a rendezvényekkel kapcsolatos egyéb problémák megoldásában is. <b>Munkáink során nagy figyelmet fordítunk a megbízhatóságra, a minőségre, illetve a megfizethető árakra.</b></p>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-12 col-sm-12 d-flex animate justify-content-center align-items-center mt-4 mt-lg-0"><img src="/assets/tech/20240704-_MG_2735-WEB.jpg" alt="Rendezvény fotó" style="border-radius: 15px;" width="300" height="auto" alt=""></div>
+                    <div class="col-lg-3 col-md-12 col-sm-12 d-flex animate justify-content-center align-items-center mt-4 mt-lg-0"><img src="/assets/tech/20240704-_MG_2735-WEB.webp" alt="Rendezvény fotó" style="border-radius: 15px;" width="300" height="auto" alt=""></div>
                 </div>
-                <img class="img-fluid d-flex" src="assets/img/temp.png" style="width: 50%;" alt="..." />
+                <img class="img-fluid d-flex" src="assets/img/temp.webp" style="width: 50%;" alt="..." />
             </div>
         </section>
         <!-- Projects-->

@@ -11065,8 +11065,13 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.15rem;
   border: 0;
+  background-color: #5c5c5c; /* közepes szürke háttér */
+  color: #ffffff; /* fehér szöveg */
 }
 
+.btn:hover {
+  background-color: #3a3a3a; /* sötétebb szürke árnyalat hoverhez */
+}
 
 .masthead h1, .masthead .h1 {
   font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";

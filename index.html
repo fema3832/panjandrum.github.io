@@ -32,7 +32,7 @@
         <link rel="preload" fetchpriority="high" href="/assets/logo/chamsys2.svg" as="image">
         <link rel="preload" fetchpriority="high" href="/assets/logo/involight.svg" as="image">
         <link rel="preload" fetchpriority="high" href="/assets/logo/prolyte.svg" as="image">
-        <link rel="preload" fetchpriority="high" href="../assets/background.mp4" as="video">
+        <link fetchpriority="high" href="../assets/background.webm">
 		<!-- Primary Meta Tags -->
 		<meta name="title" content="Panjandrum - Sound & Light" />
 		<meta name="description" content="Rendezvények, koncertek, családi napok, és egyéb más rendezvények profi technikai megvalósítása, több évtizedes tapasztalattal." />
@@ -61,12 +61,12 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <link rel="apple-touch-icon" href="/assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link rel="preload" fetchpriority="high" href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link fetchpriority="high" href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
         <link fetchpriority="high" href="/css/styles.css" rel="stylesheet"/>
     </head>
     <body id="page-top">
-        <video id="bgVideo" autoplay="" loop="" muted="" playsinline="">
-            <source src="../assets/background.mp4" type="video/mp4" />
+        <video id="bgVideo" autoplay="" loop="" muted="" playsinline="" preload="none" loading="lazy" poster="/assets/background.webp">
+            <source src="../assets/background.webm" type="video/webm" />
             Az Ön böngészője nem támogatja a HTML5 videót.
          </video>
         <!-- Navigation-->

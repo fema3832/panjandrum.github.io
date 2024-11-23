@@ -1,3 +1,6 @@
 User-agent: *
 Disallow:
 Sitemap: https://panjandrum.hu/sitemap.xml
+
+
+sudo docker run -e EULA=TRUE -d -p 25565:25565 --name minecraft -v mc-data:/data itzg/minecraft-server:latest

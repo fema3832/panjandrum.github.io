@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionHero from '../../components/sectionhero.astro';
+import TechDescription from '../../components/techdescription.astro';
+import { Image } from 'astro:assets';
+import video from '../../assets/video.jpg';
+---
+
+<Layout>
+  <SectionHero
+    title="Vetítés"
+    description="Komplett szabadtéri kertmozi kivitelezés felfújható vászonnal, az ország bármely pontján."
+    nexthref="#tech"
+  />
+
+  <!-- BEVEZETŐ SZÖVEG -->
+  <TechDescription
+    title="Komplett szabadtéri kertmozi és vetítés"
+    description="
+        Felfújható, kb. 6x3.5 méteres vásznunkkal és nagy fényerejű projektorunkkal komplett szabadtéri kertmozit telepítünk bárhova. Gyorsan felállítható rendszer, amivel közösségi eseményeken, nyári estéken vagy privát rendezvényeken biztosítunk tűéles képet és igazi moziélményt.
+        "
+  />
+
+  <section class="py-12 sm:py-16 md:py-20 bg-linear-to-t from-transparent to-yellow-500/50 overflow-hidden">
+    <div class="max-w-7xl mx-auto bg-neutral-950/80 px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-15 border-yellow-400 border-2">
+      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-20">
+        <div class="w-full lg:w-1/2 relative">
+          <div class="absolute -inset-4 bg-yellow-600/20 rounded-xl blur-2xl"></div>
+          <Image
+            src={video}
+            alt="Mobil kertmozi vetítés"
+            class="relative rounded-2xl border border-neutral-800 w-full object-cover h-55 sm:h-80 lg:h-112.5 shadow-2xl shadow-yellow-900/10"
+          />
+        </div>
+
+        <div class="w-full lg:w-1/2">
+          <h2 class="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+            <span class="text-yellow-500">Mobil kertmozi</span> és szabadtéri
+            vetítés
+          </h2>
+          <p class="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed mb-6">
+            A 6x3.5 méteres felfújható vásznunkkal és nagy fényerejű
+            projektorunkkal teljes értékű moziélményt viszünk bármilyen
+            szabadtéri helyszínre. A rendszer gyorsan telepíthető, és stabil
+            képet biztosít közösségi rendezvényeken, nyári moziesteken vagy
+            privát eseményeken. A helyszínen mindent intézünk a felépítéstől a
+            lebonyolításig.
+          </p>
+          <div class="w-12 h-1 bg-yellow-500 rounded-full"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  [x-cloak] {
+    display: none !important;
+  }
+</style>

@@ -1,0 +1,196 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import SectionHero from '../components/sectionhero.astro';
+
+// 1. Az összes kép dinamikus betöltése
+const imageFiles = import.meta.glob<ImageMetadata>(
+  '/src/assets/reference/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
+  {
+    eager: true,
+    import: 'default',
+  }
+);
+
+// 2. A galéria adatszerkezet összeállítása
+const imageGallery = Object.entries(imageFiles).map(([path, img]) => {
+  const fileName = path.split('/').pop()?.split('.')[0] || '';
+  const formattedTitle = fileName.replace(/[-_]/g, ' ');
+
+  return {
+    asset: img, // Az Astro <Image /> számára
+    photo: img.src, // Az Alpine modal számára
+    alt: formattedTitle,
+  };
+});
+---
+
+<Layout>
+  <SectionHero
+    title="Referencia"
+    description="Az elmúlt évtizedek rendezvényei egy helyen."
+    nexthref="#tech"
+  />
+
+  <section
+    class="bg-linear-to-t from-transparent via-yellow-500/50 to-transparent scroll-mt-16"
+    id="tech"
+  >
+    <div
+      x-data={`{
+          activeIndex: null,
+          loaded: false,
+          images: ${JSON.stringify(imageGallery.map((i) => ({ photo: i.photo, alt: i.alt })))},
+          open(index) {
+            this.loaded = false;
+            this.activeIndex = index;
+            this.$refs.dialog.showModal();
+            this.checkLoaded();
+          },
+          close() {
+            // Először elindítjuk az eltűnő animációt (fade & scale down)
+            this.loaded = false;
+            
+            // Megvárjuk az animáció végét (200ms), és csak utána zárjuk be a modalt
+            setTimeout(() => {
+              if (this.$refs.dialog && this.$refs.dialog.open) {
+                this.$refs.dialog.close();
+              }
+              this.activeIndex = null;
+            }, 200);
+          },
+          next() {
+            if (this.activeIndex === null) return;
+            this.loaded = false;
+            this.activeIndex = (this.activeIndex + 1) % this.images.length;
+            this.checkLoaded();
+          },
+          prev() {
+            if (this.activeIndex === null) return;
+            this.loaded = false;
+            this.activeIndex = (this.activeIndex - 1 + this.images.length) % this.images.length;
+            this.checkLoaded();
+          },
+          checkLoaded() {
+            this.$nextTick(() => {
+              const img = this.$refs.modalImg;
+              if (img && img.complete && img.naturalWidth > 0) {
+                this.loaded = true;
+              }
+            });
+          }
+        }`}
+      @keyup.right.window="if($refs.dialog &&$refs.dialog.open) next()"
+      @keyup.left.window="if($refs.dialog &&$refs.dialog.open) prev()"
+      class="w-full h-full select-none max-w-7xl mx-auto px-4 py-10"
+    >
+      <!-- KÉPRÁCS -->
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+        {imageGallery.map((image, index) => (
+          <div class="relative group overflow-hidden bg-gray-200 break-inside-avoid shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Image
+              src={image.asset}
+              alt={image.alt}
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              class="w-full h-auto select-none cursor-zoom-in group-hover:scale-102 transition-transform duration-300 block"
+              @click={`open(${index})`}
+            />
+            {/* <!-- Cím overlay a kis képeken --> */}
+            <div class="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 via-black/60 via-80% to-transparent p-4 pointer-events-none opacity-100 xl:opacity-0 xl:group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <p class="text-white text-md xl:text-lg font-medium capitalize truncate w-full">
+                {image.alt}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- BÖNGÉSZŐ NATÍV DIALOG MODAL -->
+      <dialog
+        x-ref="dialog"
+        @click="if ($event.target ===$el) close()"
+        @cancel.prevent="close()"
+        class="bg-transparent border-0 p-0 m-auto max-w-none max-h-none w-screen h-screen backdrop:bg-slate-950/80 backdrop:backdrop-blur-md overflow-hidden focus:outline-none select-none transition-all duration-200"
+      >
+        <div
+          class="fixed inset-0 flex items-center justify-center w-full h-full pointer-events-none transition-opacity duration-200"
+          :class="loaded ? 'opacity-100' : 'opacity-0'"
+        >
+          <!-- Bezárás (X) gomb -->
+          <button
+            @click="close()"
+            type="button"
+            class="fixed top-4 right-4 z-50 flex items-center justify-center w-11 h-11 text-white bg-black/50 hover:bg-black/80 transition cursor-pointer backdrop-blur-sm font-bold text-lg pointer-events-auto"
+          >
+            ✕
+          </button>
+
+          <!-- Bal nyíl -->
+          <button
+            @click="prev()"
+            type="button"
+            class="fixed left-4 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 text-white bg-black/50 hover:bg-black/80 transition cursor-pointer backdrop-blur-sm pointer-events-auto"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
+          </button>
+
+          <!-- Jobb nyíl -->
+          <button
+            @click="next()"
+            type="button"
+            class="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 text-white bg-black/50 hover:bg-black/80 transition cursor-pointer backdrop-blur-sm pointer-events-auto"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
+
+          <!-- MEGNAGYOBBÍTOTT KÉP ÉS CÍM -->
+          <div class="relative p-2 pointer-events-auto flex flex-col items-center justify-center min-h-50">
+            <template x-if="activeIndex !== null">
+              <img
+                x-ref="modalImg"
+                :src="images[activeIndex]?.photo"
+                :alt="images[activeIndex]?.alt"
+                @load="loaded = true"
+                :class="loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'"
+                class="object-contain max-h-[88vh] max-w-[92vw] w-auto h-auto shadow-2xl transition-all duration-200 ease-out"
+              />
+            </template>
+
+            <!-- Cím a nagy képen -->
+            <p
+              x-text="images[activeIndex]?.alt"
+              :class="loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'"
+              class="absolute bottom-3 text-white text-md md:text-xl font-medium text-center capitalize bg-black/60 px-8 py-1.5 backdrop-blur-md shadow-lg max-w-[80vw] truncate transition-all duration-200 ease-out"
+            ></p>
+          </div>
+        </div>
+      </dialog>
+    </div>
+  </section>
+</Layout>

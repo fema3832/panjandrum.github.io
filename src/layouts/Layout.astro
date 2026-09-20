@@ -1,0 +1,140 @@
+---
+import { SEO } from 'astro-seo';
+import { AstroFont } from 'astro-font';
+import { Schema } from 'astro-seo-schema';
+import Navbar from '../components/navbar.astro';
+import Footer from '../components/footer.astro';
+import VideoHero from '../components/videohero.astro';
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <AstroFont
+      config={[
+        {
+          name: 'Inter',
+          src: [],
+          googleFontsURL:
+            'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
+          preload: true,
+          display: 'swap',
+          selector: 'body',
+          fallback: 'sans-serif',
+        },
+      ]}
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/icons/favicon.ico"
+      sizes="any"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/icons/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#facc15" />
+    <SEO
+      title="Panjandrum - Hangtechnika és Fénytechnika Rendezvényekre"
+      titleTemplate="%s | Panjandrum"
+      description="Profi hang-, fény- és színpadtechnika koncertekre, esküvőkre, falunapokra és céges rendezvényekre 1992 óta, Tatán és Komárom-Esztergom megyében."
+      canonical="https://panjandrum.hu/"
+      openGraph={{
+        basic: {
+          title: 'Panjandrum - Hangtechnika és Fénytechnika Rendezvényekre',
+          type: 'website',
+          image: 'https://panjandrum.hu/videos/background.webp',
+        },
+        optional: {
+          description:
+            'Profi hang-, fény- és színpadtechnika koncertekre, esküvőkre, falunapokra és céges rendezvényekre 1992 óta, Tatán és Komárom-Esztergom megyében.',
+          siteName: 'Panjandrum',
+          locale: 'hu_HU',
+        },
+      }}
+      twitter={{ card: 'summary_large_image' }}
+    />
+    <Schema
+      item={{
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        '@id': 'https://panjandrum.hu/#organization',
+        name: 'Panjandrum',
+        description:
+          'Rendezvénytechnikai szolgáltatások: hangtechnika, fénytechnika, színpad és kordon kivitelezése koncertekre, esküvőkre, falunapokra és céges rendezvényekre 1992 óta.',
+        url: 'https://panjandrum.hu',
+        image: 'https://panjandrum.hu/videos/background.webp',
+        telephone: '+36309727444',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Tata',
+          addressRegion: 'Komárom-Esztergom',
+          addressCountry: 'HU',
+        },
+        areaServed: [
+          'Tata',
+          'Komárom',
+          'Szőny',
+          'Baj',
+          'Tököl',
+          'Visegrád',
+          'Komárom-Esztergom megye',
+        ],
+      }}
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+	<style is:global>
+		img:not([src$=".svg"]) {
+			background-color: #262626;
+		}
+		img:not([src$=".svg"]):not(.is-loaded) {
+			animation: skeleton-pulse 1.6s ease-in-out infinite;
+		}
+		@keyframes skeleton-pulse {
+			0%, 100% { opacity: 1; }
+			50% { opacity: 0.6; }
+		}
+	</style>
+
+	<script>
+		function trackImageLoad(img: HTMLImageElement) {
+			if (img.complete) {
+			img.classList.add("is-loaded");
+			} else {
+			img.addEventListener("load", () => img.classList.add("is-loaded"), { once: true });
+			}
+		}
+
+		document
+			.querySelectorAll<HTMLImageElement>("img:not([src$='.svg'])")
+			.forEach(trackImageLoad);
+	</script>
+  </head>
+  <body class="flex flex-col min-h-screen bg-neutral-900 glass">
+    <VideoHero />
+    <Navbar />
+    <main class="grow glass bg-neutral-900/70">
+      <slot />
+      <Footer />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+
+:root {
+  /* Midnight Palette */
+  --color-bg-deep: #0a0a0a; /* Neutral 950 */
+  --color-bg-surface: #171717; /* Neutral 900 [cite: 1, 6] */
+  --color-accent: #7c3aed; /* Purple 600 [cite: 9, 13] */
+  --color-accent-hover: #a78bfa; /* Purple 400 */
+  --color-text-main: #f8fafc; /* Slate 50 */
+  --color-text-muted: #94a3b8; /* Slate 400 [cite: 5] */
+}
+
+/* Glassmorphism utility */
+.glass {
+  @apply backdrop-blur-md;
+}
+
+html {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  scroll-behavior: smooth;
+}

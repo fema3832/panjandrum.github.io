@@ -1,0 +1,140 @@
+---
+import { Image } from 'astro:assets'; // 1. Hiányzó import
+import Layout from '../layouts/Layout.astro';
+import TextSection from '../components/textsection.astro';
+import sound from '/src/assets/hdl20.jpg';
+import light from '/src/assets/about.jpg';
+
+const logoFiles = import.meta.glob<ImageMetadata>('/src/assets/logo/*.svg', {
+  eager: true,
+  import: 'default',
+});
+// 2. Levettük a .src-t a végéről:
+const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
+---
+
+<Layout>
+  <section class="w-full relative flex items-center justify-center overflow-hidden bg-linear-to-t from-transparent to-yellow-500/50 min-h-[calc(100dvh-60px)]">
+    <div class="relative container mx-auto px-4 text-center text-white max-w-4xl">
+      <div class="mb-4 sm:mb-5 flex justify-center items-center">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-200 leading-tight">
+          Több mint <span class="text-yellow-400">30 év</span>{' '}
+          rendezvénytechnika
+        </h1>
+      </div>
+
+      <p class="mx-auto font-semibold mb-8 sm:mb-10 max-w-2xl text-base sm:text-xl md:text-2xl text-slate-200">
+        <span>
+          1992 óta foglalkozunk hangosítással, fénytechnikával és rendezvények
+          teljes körű technikai megvalósításával.
+        </span>
+      </p>
+    </div>
+    <div class="absolute bottom-32 left-1/2 -translate-x-1/2 z-10">
+      <a
+        href="#tech"
+        class="text-white/70 hover:text-yellow-400 transition-colors duration-200 animate-bounce block"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-14 sm:size-20 md:hover:size-22 lg:hover:size-24 transition-all duration-200"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m19.5 8.25-7.5 7.5-7.5-7.5"
+          />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <TextSection
+    title1={`<span class="text-yellow-500">1992 óta</span> a rendezvények szolgálatában`}
+    description1="Cégünk több rendezvénytechnikai lehetőséggel is rendelkezik: hangtechnika, fénytechnika, színpad és kordon. 1992 óta foglalkozunk hangosítással és fénytechnikával, illetve rendezvények szervezésével, lebonyolításával, konferenciák, prezentációk technikai kivitelezésével és alkalmi elektromos hálózat kiépítésével."
+    img1={sound}
+
+    title2={`Minőség, megbízhatóság <span class="text-yellow-500">és elérhető árak</span>`}
+    description2="Vállaljuk kisebb rendezvényektől kezdve koncertek, esküvők, bálok, falunapok, utcabálok technikai megvalósítását, illetve cégek, diszkók, vendéglátóhelyek hangosítási és fénytechnikai igényeinek teljes kivitelezését. Nagy, különleges rendezvény lebonyolítása is megoldott nagyobb partnereink segítségével - munkáink során nagy figyelmet fordítunk a megbízhatóságra, a minőségre és a megfizethető árakra."
+    img2={light}
+  />
+
+  <!-- CTA -->
+  <!-- <section class="bg-linear-to-t from-neutral-950 via-neutral-950 to-transparent text-white py-16 sm:pb-24 -mt-12 sm:-mt-16 md:-mt-20">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <a href="/contact/" class="inline-flex items-center gap-2 px-8 py-4 bg-yellow-500 hover:bg-yellow-400 text-neutral-950 font-semibold transition-colors duration-150">
+                Kapcsolatfelvétel
+            </a>
+        </div>
+    </section> -->
+
+  <!-- MÁRKÁK, AMIKKEL DOLGOZUNK -->
+  <section class="bg-linear-to-t from-transparent to-yellow-500/50 text-slate-200 py-16 sm:pb-24">
+    <div class="max-w-6xl mx-auto bg-neutral-950/80 px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-15 border-yellow-400 border-2">
+      <p class="text-md uppercase tracking-widest text-neutral-400 mb-2">
+        Márkák, amikkel dolgozunk
+      </p>
+      <hr class="mb-6 text-neutral-400" />
+      <div class="flex flex-wrap items-center gap-x-10 gap-y-8">
+        <Image
+          src={logo('rcf')}
+          alt="RCF"
+          class="h-12 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+        />
+        <!-- <Image src={logo('rcftt')} alt="RCF TT+" class="h-12 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" /> -->
+        <Image
+          src={logo('electro-voice')}
+          alt="Electro-Voice"
+          class="h-10 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+        />
+        <Image
+          src={logo('sennheiser')}
+          alt="Sennheiser"
+          class="h-7 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+        />
+        <Image
+          src={logo('shure')}
+          alt="Shure"
+          class="h-9 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+        />
+        <Image
+          src={logo('db')}
+          alt="dB Technologies"
+          class="h-8 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+        />
+        <Image
+          src={logo('akg')}
+          alt="AKG"
+          class="h-14 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+        />
+        <!-- <Image src={logo('beyerdynamic')} alt="Beyerdynamic" class="h-12 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" />
+                <Image src={logo('audio-technica')} alt="Audio-Technica" class="h-11 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" /> -->
+        <Image
+          src={logo('soundcraft')}
+          alt="Soundcraft"
+          class="h-9 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+        />
+        <Image
+          src={logo('shehds')}
+          alt="Shehds"
+          class="h-8 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+        />
+        <Image
+          src={logo('involight')}
+          alt="Involight"
+          class="h-8 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+        />
+        <Image
+          src={logo('chamsys2')}
+          alt="Chamsys"
+          class="h-12 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+        />
+        <!-- <Image src={logo('prolyte')} alt="Prolyte" class="h-11 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" /> -->
+      </div>
+    </div>
+  </section>
+</Layout>

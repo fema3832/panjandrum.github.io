@@ -1,0 +1,309 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionHero from '../../components/sectionhero.astro';
+import TechDescription from '../../components/techdescription.astro';
+import { Image } from 'astro:assets';
+import hdl20 from '../../assets/hdl20.jpg';
+
+// Az összes logo-SVG egyszeri betöltése a src/assets/logo mappából
+const logoFiles = import.meta.glob<ImageMetadata>('/src/assets/logo/*.svg', {
+  eager: true,
+  import: 'default',
+});
+// 2. Levettük a .src-t a végéről:
+const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
+---
+
+<Layout>
+  <SectionHero
+    title="Hangtechnika"
+    description="A profi hangtechnika garantálja, hogy minden szó és hang eljusson a közönséghez, tisztán és élesen."
+    nexthref="#tech"
+  />
+
+  <!-- BEVEZETŐ SZÖVEG -->
+  <TechDescription
+    title="Rugalmas hangtechnikai megoldások minden igényre"
+    description="
+        A kis klubkoncertektől a nagyszínpados fesztiválokig komplett hangrendszereket telepítünk és működtetünk. Pontosan méretezett riderképes parkkal és tapasztalt gárdával dolgozunk, hogy a produkció megszólalása az első sortól az utolsóig stabil, érthető és arányos legyen.
+        "
+  />
+
+  <!-- ESZKÖZPARK BÖNGÉSZŐ -->
+  <section class="bg-linear-to-t from-transparent to-yellow-500/50 text-white pb-16 sm:pb-24">
+    <div
+      x-data="{
+                tab: 'hangfalak',
+                activePanel: 'hangfalak',
+                switchTab(value) {
+                    if (this.tab === value) return;
+                    this.tab = value;
+                    this.$refs.panelContent.classList.add('opacity-0');
+                    setTimeout(() => {
+                        this.activePanel = value;
+                        this.$nextTick(() => this.$refs.panelContent.classList.remove('opacity-0'));
+                    }, 200);
+                }
+            }"
+      class="max-w-6xl mx-auto px-4"
+    >
+      <!-- TAB SÁV -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 border-yellow-400 border-2 text-[11px] sm:text-xs uppercase tracking-wider bg-neutral-900/50">
+        <button
+          @click="switchTab('hangfalak')"
+          :class="tab === 'hangfalak' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
+          class="px-4 py-3 text-left text-lg cursor-pointer transition-colors duration-150 uppercase font-semibold"
+        >
+          Hangfalak
+        </button>
+        <button
+          @click="switchTab('keverok')"
+          :class="tab === 'keverok' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
+          class="px-4 py-3 text-left text-lg cursor-pointer transition-colors duration-150 uppercase font-semibold"
+        >
+          Keverőpultok & Stagebox
+        </button>
+        <button
+          @click="switchTab('mikrofonok')"
+          :class="tab === 'mikrofonok' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
+          class="px-4 py-3 text-left text-lg cursor-pointer transition-colors duration-150 uppercase font-semibold"
+        >
+          Mikrofonok
+        </button>
+      </div>
+
+      <!-- TARTALOM PANEL -->
+      <div class="relative border-t-0 border-yellow-400 border-2 min-h-105 sm:min-h-120 overflow-hidden">
+        <Image
+          src={hdl20}
+          alt=""
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-linear-to-tr from-neutral-950 from-30% via-neutral-950/70 to-70% to-neutral-950"></div>
+
+        <div
+          x-ref="panelContent"
+          class="relative p-6 sm:p-10 lg:p-14 transition-opacity duration-200 ease-out"
+        >
+          <!-- HANGFALAK -->
+          <div
+            x-show="activePanel === 'hangfalak'"
+            x-cloak
+            class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10"
+          >
+            <div>
+              <Image
+                src={logo('rcf')}
+                alt="RCF"
+                class="h-11 w-auto object-contain brightness-0 invert mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>RCF HDL-20A</span>
+                  <span class="text-neutral-500">Line Array</span>
+                </li>
+                <li class="flex justify-between gap-4">
+                  <span>RCF 8006-AS</span>
+                  <span class="text-neutral-500">Sub</span>
+                </li>
+                <!-- <li class="flex justify-between gap-4"><span>RCF TT+ Series</span><span class="text-neutral-500">Aktív</span></li> -->
+                <li class="flex justify-between gap-4">
+                  <span>RCF ART-910</span>
+                  <span class="text-neutral-500">Aktív</span>
+                </li>
+                <li class="flex justify-between gap-4">
+                  <span>RCF ART-915</span>
+                  <span class="text-neutral-500">Aktív</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('hk')}
+                alt="HK Audio"
+                class="h-12 w-auto object-contain mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>HK Audio Polar 12</span>
+                  <span class="text-neutral-500">Oszlopsugárzó</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('electro-voice')}
+                alt="Electro-Voice"
+                class="h-7 w-auto object-contain brightness-0 invert mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>Electro-Voice ZLX széria</span>
+                  <span class="text-neutral-500">Aktív</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('db')}
+                alt="dB Technologies"
+                class="h-7 w-auto object-contain brightness-0 invert mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>dB Technologies Opera széria</span>
+                  <span class="text-neutral-500">Aktív</span>
+                </li>
+                <li class="flex justify-between gap-4">
+                  <span>dB Technologies B-Hype széria</span>
+                  <span class="text-neutral-500">Aktív</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- KEVERŐPULTOK -->
+          <div
+            x-show="activePanel === 'keverok'"
+            x-cloak
+            class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10"
+          >
+            <div>
+              <Image
+                src={logo('behringer')}
+                alt="Behringer"
+                class="h-6 w-auto object-contain mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li>Behringer Wing Compact</li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('soundcraft')}
+                alt="Soundcraft"
+                class="h-6 w-auto object-contain brightness-0 invert mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li>Soundcraft Si Expression 3</li>
+                <li>Soundcraft UI24 / UI12</li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('yamaha')}
+                alt="Yamaha"
+                class="h-7 w-auto object-contain mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li>Yamaha DM3S</li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('allen-heath')}
+                alt="Allen & Heath"
+                class="h-5 w-auto object-contain mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li>Allen & Heath ZED széria</li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('soundsation')}
+                alt="Soundsation"
+                class="h-8 w-auto object-contain mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li>SoundSation MIOMIX széria</li>
+              </ul>
+              <p class="text-sm text-neutral-500 italic mt-4">
+                Kisebb rendezvényekhez és gyors installációkhoz.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-xl sm:text-2xl mb-1">
+                Csoportkábel/Stagebox
+              </h3>
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li>Behringer S16 Stagebox - 2x</li>
+                <li>32/16 Analog csoportkábel</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- MIKROFONOK -->
+          <div
+            x-show="activePanel === 'mikrofonok'"
+            x-cloak
+            class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10"
+          >
+            <div>
+              <Image
+                src={logo('shure')}
+                alt="Shure"
+                class="h-10 w-auto object-contain brightness-0 invert mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li>Shure SM & Beta széria</li>
+                <li>Shure SLXD</li>
+                <li>Shure BLX</li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('akg')}
+                alt="AKG"
+                class="h-10 w-auto object-contain brightness-0 invert mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li>AKG WMS</li>
+                <li>AKG C1000 (OG)</li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('sennheiser')}
+                alt="Sennheiser"
+                class="h-10 w-auto object-contain brightness-0 invert mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li>Sennheiser E600 Dobszett</li>
+              </ul>
+            </div>
+            <!-- <div>
+                            <Image src={logo("beyerdynamic")} alt="beyerdynamic" class="h-5 w-auto object-contain brightness-0 invert mb-3" />
+                            <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                                <li>Vezetékes mikrofonok</li>
+                            </ul>
+                        </div> -->
+            <!-- <div>
+                            <Image src={logo("audio-technica")} alt="Audio-Technica" class="h-9 w-auto object-contain brightness-0 invert mb-3" />
+                            <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                                <li>Vezetékes mikrofonok</li>
+                            </ul>
+                        </div> -->
+            <div>
+              <Image
+                src={logo('se')}
+                alt="sE Electronics"
+                class="h-10 w-auto object-contain mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li>V7</li>
+                <li>V7 Vintage</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  [x-cloak] {
+    display: none !important;
+  }
+</style>

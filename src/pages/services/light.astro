@@ -1,0 +1,245 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionHero from '../../components/sectionhero.astro';
+import TechDescription from '../../components/techdescription.astro';
+import { Image } from 'astro:assets';
+import light from '../../assets/light.jpg';
+
+// Az összes logo-SVG egyszeri betöltése a src/assets/logo mappából
+const logoFiles = import.meta.glob<ImageMetadata>('/src/assets/logo/*.svg', {
+  eager: true,
+  import: 'default',
+});
+// 2. Levettük a .src-t a végéről:
+const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
+---
+
+<Layout>
+  <SectionHero
+    title="Fénytechnika"
+    description="A megfelelő fénytechnika élettel tölti meg az eseményt: hangulatot teremt, kiemeli a produkciókat."
+    nexthref="#tech"
+  />
+
+  <!-- BEVEZETŐ SZÖVEG -->
+  <TechDescription
+    title="Látványos fénymegoldások a színpadtól a térvilágításig"
+    description="
+        Komplett színpad- és látványvilágot építünk korszerű & modern lámpáparkunkal és vezérlésünkkel. A zenére és az esemény dinamikájára szabjuk a fényeket, a zártkörű rendezvényektől az összetett színpadi show-kig.
+        "
+  />
+
+  <!-- ESZKÖZPARK BÖNGÉSZŐ -->
+  <section
+    class="bg-linear-to-t from-transparent to-yellow-500/50 text-white pb-16 sm:pb-24"
+    id="tech"
+  >
+    <div
+      x-data="{
+                tab: 'mozgofej',
+                activePanel: 'mozgofej',
+                switchTab(value) {
+                    if (this.tab === value) return;
+                    this.tab = value;
+                    this.$refs.panelContent.classList.add('opacity-0');
+                    setTimeout(() => {
+                        this.activePanel = value;
+                        this.$nextTick(() => this.$refs.panelContent.classList.remove('opacity-0'));
+                    }, 200);
+                }
+            }"
+      class="max-w-6xl mx-auto px-4"
+    >
+      <!-- TAB SÁV -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 border-yellow-400 text-[11px] sm:text-xs uppercase tracking-wider bg-neutral-900/50">
+        <button
+          @click="switchTab('mozgofej')"
+          :class="tab === 'mozgofej' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
+          class="px-4 py-3 text-left text-lg cursor-pointer transition-colors duration-150"
+        >
+          Mozgófejek & Pult
+        </button>
+        <button
+          @click="switchTab('par')"
+          :class="tab === 'par' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
+          class="px-4 py-3 text-left text-lg cursor-pointer transition-colors duration-150"
+        >
+          Blinder & LED Par
+        </button>
+        <button
+          @click="switchTab('effekt')"
+          :class="tab === 'effekt' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
+          class="px-4 py-3 text-left text-lg cursor-pointer transition-colors duration-150"
+        >
+          Effekt & Lézer
+        </button>
+      </div>
+
+      <!-- TARTALOM PANEL -->
+      <div class="relative border-t-0 border-yellow-400 border-2 min-h-95 sm:min-h-105 overflow-hidden">
+        <Image
+          src={light}
+          alt=""
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-linear-to-tr from-neutral-950 from-30% via-neutral-950/70 to-70% to-neutral-950"></div>
+
+        <div
+          x-ref="panelContent"
+          class="relative p-6 sm:p-10 lg:p-14 transition-opacity duration-200 ease-out"
+        >
+          <!-- MOZGÓFEJEK -->
+          <div
+            x-show="activePanel === 'mozgofej'"
+            x-cloak
+            class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10"
+          >
+            <div>
+              <Image
+                src={logo('shehds')}
+                alt="Shehds"
+                class="h-5 w-auto object-contain brightness-0 invert mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>Shehds 19x15 Wash/Zoom</span>
+                  <span class="text-neutral-500">Mozgófej</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('involight')}
+                alt="Involight"
+                class="h-5 w-auto object-contain brightness-0 invert mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>Involight LEDMH50S</span>
+                  <span class="text-neutral-500">Spot</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('light4me')}
+                alt="Light4Me"
+                class="h-8 w-auto object-contain mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>Light4Me Focus 150</span>
+                  <span class="text-neutral-500">Beam</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-bold text-xl sm:text-2xl mb-1">Beam</h3>
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>Beam 230</span>
+                  <span class="text-neutral-500">Beam</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('chamsys2')}
+                alt="Chamsys"
+                class="h-8 w-auto object-contain mb-3 invert-100"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>Chamsys MagicQ Compact Connect</span>
+                  <span class="text-neutral-500">Wing</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-bold text-xl sm:text-2xl mb-1">
+                Pult & Tartozék
+              </h3>
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>Lenovo ThinkCentre & 27" Touchscreen</span>
+                  <span class="text-neutral-500">Gép</span>
+                </li>
+                <li class="flex justify-between gap-4">
+                  <span>Verbatim 15.6 Portable Touchscreen</span>
+                  <span class="text-neutral-500">Monitor</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- BLINDER & LED PAR -->
+          <div
+            x-show="activePanel === 'par'"
+            x-cloak
+            class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10"
+          >
+            <div>
+              <Image
+                src={logo('shehds')}
+                alt="Shehds"
+                class="h-5 w-auto object-contain brightness-0 invert mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>Shehds 2Eyes 200W CW/WW</span>
+                  <span class="text-neutral-500">Blinder</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <Image
+                src={logo('involight')}
+                alt="Involight"
+                class="h-5 w-auto object-contain brightness-0 invert mb-3"
+              />
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>Involight Ledpar12HEX</span>
+                  <span class="text-neutral-500">Par</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- EFFEKT & LÉZER -->
+          <div
+            x-show="activePanel === 'effekt'"
+            x-cloak
+            class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10"
+          >
+            <div>
+              <h3 class="font-bold text-xl sm:text-2xl mb-1">Effekt fény</h3>
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li>Spider DJ Light</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-bold text-xl sm:text-2xl mb-1">Lézer</h3>
+              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                <li class="flex justify-between gap-4">
+                  <span>Lézer</span>
+                  <span class="text-neutral-500">1W</span>
+                </li>
+                <li class="flex justify-between gap-4">
+                  <span>Lézer</span>
+                  <span class="text-neutral-500">2W</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  [x-cloak] {
+    display: none !important;
+  }
+</style>

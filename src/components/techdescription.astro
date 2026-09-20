@@ -1,0 +1,29 @@
+---
+const {
+  title = 'Default Title',
+  description = 'Default description text.',
+  custom_id = 'tech',
+} = Astro.props;
+---
+
+<section
+  class="py-12 sm:py-16 lg:py-20 bg-linear-to-t from-yellow-500/50 to-transparent text-white scroll-mt-16"
+  id={custom_id}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-neutral-950/80 px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-15 border-yellow-400 border-2">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight mb-6">
+        {title}
+      </h2>
+      <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-10 max-w-prose">
+        {description}
+      </p>
+      <a
+        href="/contact/"
+        class="uppercase inline-flex items-center gap-2 w-full sm:w-auto justify-center px-8 py-4 border-2 border-yellow-400 hover:bg-yellow-400 hover:text-neutral-900 text-slate-200 font-semibold transition-all duration-250"
+      >
+        Ajánlatot kérek
+      </a>
+    </div>
+  </div>
+</section>

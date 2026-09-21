@@ -31,17 +31,19 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Ha a workspace-ben több csomag van, cseréld le a --filter-t
-      # a te Astro appod nevére vagy útvonalára, pl.:
-      # run: pnpm --filter ./apps/web build
+      # A pnpm-workspace.yaml-ban az esbuild és a sharp build szkriptjei
+      # le vannak tiltva (allowBuilds: false). Ha a build-hez vagy futtatáshoz
+      # szükség van a natív binaryjaikra, itt engedélyezzük külön a CI-ban.
+      - name: Approve native builds (esbuild, sharp)
+        run: pnpm approve-builds esbuild sharp
+
       - name: Build Astro project
-        run: pnpm --filter astro-app build
+        run: pnpm build
 
       - name: Deploy dist to main branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Ha a build más helyre teszi a dist-et, itt add meg az útvonalat
           publish_dir: ./dist
           publish_branch: main
           force_orphan: true

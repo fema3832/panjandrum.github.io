@@ -15,7 +15,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  site: 'https://panjandrum.hu/', // KÖTELEZŐ, e nélkül nem generál semmit
+  site: 'https://panjandrum.hu', // KÖTELEZŐ, e nélkül nem generál semmit
   integrations: [
     alpinejs(),
     robotsTxt(),

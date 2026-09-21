@@ -1,61 +1,47 @@
-name: Deploy Astro site to GitHub Pages
+name: Build and Deploy Astro site
 
 on:
   push:
-    branches: [ "development" ]
-  workflow_dispatch:
+    branches:
+      - development
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
-  build:
-    name: Build Astro Site
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Install pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
 
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: 'pnpm'
+          node-version: 20
+          cache: pnpm
 
-      # Csomagok telepítése
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Astro projekt buildelése
-      - name: Build site
-        run: pnpm run build
+      # Ha a workspace-ben több csomag van, cseréld le a --filter-t
+      # a te Astro appod nevére vagy útvonalára, pl.:
+      # run: pnpm --filter ./apps/web build
+      - name: Build Astro project
+        run: pnpm --filter astro-app build
 
-      # A generált dist mappa előkészítése a GitHub Pages-hez
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy dist to main branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: ./dist
-
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-      
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Ha a build más helyre teszi a dist-et, itt add meg az útvonalat
+          publish_dir: ./dist
+          publish_branch: main
+          force_orphan: true

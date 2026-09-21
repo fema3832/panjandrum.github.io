@@ -20,7 +20,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -30,12 +30,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      # A pnpm-workspace.yaml-ban az esbuild és a sharp build szkriptjei
-      # le vannak tiltva (allowBuilds: false). Ha a build-hez vagy futtatáshoz
-      # szükség van a natív binaryjaikra, itt engedélyezzük külön a CI-ban.
-      - name: Approve native builds (esbuild, sharp)
-        run: pnpm approve-builds esbuild sharp
 
       - name: Build Astro project
         run: pnpm build

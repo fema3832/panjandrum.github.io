@@ -52,21 +52,21 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
         <button
           @click="switchTab('hangfalak')"
           :class="tab === 'hangfalak' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
-          class="px-4 py-3 text-left text-lg cursor-pointer transition-colors duration-150 uppercase font-semibold"
+          class="px-4 py-3 text-left md:text-lg text-md cursor-pointer transition-colors duration-150 uppercase font-semibold"
         >
           Hangfalak
         </button>
         <button
           @click="switchTab('keverok')"
           :class="tab === 'keverok' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
-          class="px-4 py-3 text-left text-lg cursor-pointer transition-colors duration-150 uppercase font-semibold"
+          class="px-4 py-3 text-left md:text-lg text-md cursor-pointer transition-colors duration-150 uppercase font-semibold"
         >
           Keverőpultok & Stagebox
         </button>
         <button
           @click="switchTab('mikrofonok')"
           :class="tab === 'mikrofonok' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
-          class="px-4 py-3 text-left text-lg cursor-pointer transition-colors duration-150 uppercase font-semibold"
+          class="px-4 py-3 text-left md:text-lg text-md cursor-pointer transition-colors duration-150 uppercase font-semibold"
         >
           Mikrofonok
         </button>

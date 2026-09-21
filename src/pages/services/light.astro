@@ -55,21 +55,21 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
         <button
           @click="switchTab('mozgofej')"
           :class="tab === 'mozgofej' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
-          class="px-4 py-3 text-left text-lg cursor-pointer transition-colors duration-150"
+          class="px-4 py-3 text-left md:text-lg text-md cursor-pointer transition-colors duration-150"
         >
           Mozgófejek & Pult
         </button>
         <button
           @click="switchTab('par')"
           :class="tab === 'par' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
-          class="px-4 py-3 text-left text-lg cursor-pointer transition-colors duration-150"
+          class="px-4 py-3 text-left md:text-lg text-md cursor-pointer transition-colors duration-150"
         >
           Blinder & LED Par
         </button>
         <button
           @click="switchTab('effekt')"
           :class="tab === 'effekt' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
-          class="px-4 py-3 text-left text-lg cursor-pointer transition-colors duration-150"
+          class="px-4 py-3 text-left md:text-lg text-md cursor-pointer transition-colors duration-150"
         >
           Effekt & Lézer
         </button>

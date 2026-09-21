@@ -22,25 +22,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 1. pnpm telepítése a virtuális gépre
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
           version: 9
 
-      # 2. Node.js beállítása pnpm cache-eléssel (gyorsabb build-ekért)
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'pnpm'
 
-      # 3. Astro build lefuttatása pnpm-mel
-      - name: Install, build, and upload site
-        uses: withastro/action@v3
+      # Csomagok telepítése
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Astro projekt buildelése
+      - name: Build site
+        run: pnpm run build
+
+      # A generált dist mappa előkészítése a GitHub Pages-hez
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
-          package-manager: pnpm
+          path: ./dist
 
   deploy:
     name: Deploy to GitHub Pages

@@ -51,7 +51,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
       class="max-w-6xl mx-auto px-4"
     >
       <!-- TAB SÁV -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 border-yellow-400 text-[11px] sm:text-xs uppercase tracking-wider bg-neutral-900/50">
+      <div class="grid grid-cols-1 sm:grid-cols-3 border-yellow-400 border-2 text-[11px] sm:text-xs uppercase tracking-wider bg-neutral-900/50">
         <button
           @click="switchTab('mozgofej')"
           :class="tab === 'mozgofej' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"

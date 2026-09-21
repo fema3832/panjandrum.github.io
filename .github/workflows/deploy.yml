@@ -1,0 +1,56 @@
+name: Deploy Astro site to GitHub Pages
+
+on:
+  push:
+    branches: [ "development" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build Astro Site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 1. pnpm telepítése a virtuális gépre
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      # 2. Node.js beállítása pnpm cache-eléssel (gyorsabb build-ekért)
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      # 3. Astro build lefuttatása pnpm-mel
+      - name: Install, build, and upload site
+        uses: withastro/action@v3
+        with:
+          path: "."
+          package-manager: pnpm
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

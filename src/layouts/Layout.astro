@@ -2,6 +2,7 @@
 import { SEO } from 'astro-seo';
 import { AstroFont } from 'astro-font';
 import { Schema } from 'astro-seo-schema';
+import { ClientRouter } from 'astro:transitions';
 import Navbar from '../components/navbar.astro';
 import Footer from '../components/footer.astro';
 import VideoHero from '../components/videohero.astro';
@@ -11,6 +12,7 @@ import '../styles/global.css';
 <!doctype html>
 <html lang="hu">
   <head>
+    <ClientRouter />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <AstroFont
@@ -102,39 +104,48 @@ import '../styles/global.css';
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-	<style is:global>
-		img:not([src$=".svg"]) {
-			background-color: #262626;
-		}
-		img:not([src$=".svg"]):not(.is-loaded) {
-			animation: skeleton-pulse 1.6s ease-in-out infinite;
-		}
-		@keyframes skeleton-pulse {
-			0%, 100% { opacity: 1; }
-			50% { opacity: 0.6; }
-		}
-	</style>
+    <style is:global>
+      img:not([src$='.svg']) {
+        background-color: #262626;
+      }
+      img:not([src$='.svg']):not(.is-loaded) {
+        animation: skeleton-pulse 1.6s ease-in-out infinite;
+      }
+      @keyframes skeleton-pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+    </style>
 
-	<script>
-		function trackImageLoad(img: HTMLImageElement) {
-			if (img.complete) {
-			img.classList.add("is-loaded");
-			} else {
-			img.addEventListener("load", () => img.classList.add("is-loaded"), { once: true });
-			}
-		}
+    <script>
+      function trackImageLoad(img: HTMLImageElement) {
+        if (img.complete) {
+          img.classList.add('is-loaded');
+        } else {
+          img.addEventListener('load', () => img.classList.add('is-loaded'), {
+            once: true,
+          });
+        }
+      }
 
-		document
-			.querySelectorAll<HTMLImageElement>("img:not([src$='.svg'])")
-			.forEach(trackImageLoad);
-	</script>
+      document
+        .querySelectorAll<HTMLImageElement>("img:not([src$='.svg'])")
+        .forEach(trackImageLoad);
+    </script>
   </head>
   <body class="flex flex-col min-h-screen bg-neutral-900 glass">
-    <VideoHero />
-    <Navbar />
-    <main class="grow glass bg-neutral-900/70">
-      <slot />
-      <Footer />
-    </main>
+    <section>
+      <VideoHero />
+      <Navbar />
+      <main class="grow glass bg-neutral-900/70">
+        <slot />
+        <Footer />
+      </main>
+    </section>
   </body>
 </html>

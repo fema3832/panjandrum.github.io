@@ -13,63 +13,65 @@ interface Props {
 }
 
 const {
-  title1 = "Default <span class='text-yellow-500'>Title</span>",
+  title1 = "Default <span class='text-yellow-400'>Title</span>",
   description1 = 'Default description text.',
-  title2 = "Default <span class='text-yellow-500'>Title2</span>",
+  title2 = "Default <span class='text-yellow-400'>Title2</span>",
   description2 = 'Default description text2.',
   img1 = defaultImg,
   img2 = defaultImg,
 } = Astro.props;
 ---
 
-<section class="py-12 sm:py-16 md:py-20 bg-linear-to-t from-yellow-500/50 to-transparent overflow-hidden">
-  <div class="max-w-7xl mx-auto bg-neutral-950/80 px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-15 border-yellow-400 border-2">
-    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-20">
-      <div class="w-full lg:w-1/2 relative">
-        <div class="absolute -inset-4 bg-yellow-600/20 rounded-xl blur-2xl"></div>
-        <Image
-          src={img1}
-          alt="Technikai eszköz 1"
-          class="relative rounded-2xl border border-neutral-800 w-full object-cover h-55 sm:h-80 lg:h-112.5 shadow-2xl shadow-yellow-900/10"
-        />
-      </div>
+<main class="bg-linear-to-t from-transparent via-yellow-400/50 to-transparent">
+  <section class="mx-4 py-12 sm:py-16 md:py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto bg-neutral-950/80 px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-15 border-yellow-400 border-2">
+      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-20">
+        <div class="w-full lg:w-1/2 relative">
+          <div class="absolute -inset-4 bg-yellow-400/20 rounded-xl blur-2xl"></div>
+          <Image
+            src={img1}
+            alt="Technikai eszköz 1"
+            class="relative rounded-2xl border border-neutral-800 w-full object-cover h-55 sm:h-80 lg:h-112.5 shadow-2xl shadow-yellow-900/10"
+          />
+        </div>
 
-      <div class="w-full lg:w-1/2">
-        <h2
-          class="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight"
-          set:html={title1}
-        />
-        <p class="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed mb-6">
-          {description1}
-        </p>
-        <div class="w-12 h-1 bg-yellow-500 rounded-full"></div>
+        <div class="w-full lg:w-1/2">
+          <h2
+            class="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight"
+            set:html={title1}
+          />
+          <p class="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed mb-6">
+            {description1}
+          </p>
+          <div class="w-12 h-1 bg-yellow-400 rounded-full"></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="py-12 sm:py-16 md:py-20 bg-linear-to-t from-yellow-500/50 via-transparent to-yellow-500/50 overflow-hidden">
-  <div class="max-w-7xl mx-auto bg-neutral-950/80 px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-15 border-yellow-400 border-2">
-    <div class="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-20">
-      <div class="w-full lg:w-1/2 relative">
-        <div class="absolute -inset-4 bg-yellow-600/10 rounded-xl blur-2xl"></div>
-        <Image
-          src={img2}
-          alt="Technikai eszköz 2"
-          class="relative rounded-2xl border border-neutral-800 w-full object-cover h-55 sm:h-80 lg:h-112.5 shadow-2xl shadow-yellow-900/10"
-        />
-      </div>
+  <section class="mx-4 py-12 sm:py-16 md:py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto bg-neutral-950/80 px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-15 border-yellow-400 border-2">
+      <div class="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-20">
+        <div class="w-full lg:w-1/2 relative">
+          <div class="absolute -inset-4 bg-yellow-400/10 rounded-xl blur-2xl"></div>
+          <Image
+            src={img2}
+            alt="Technikai eszköz 2"
+            class="relative rounded-2xl border border-neutral-800 w-full object-cover h-55 sm:h-80 lg:h-112.5 shadow-2xl shadow-yellow-900/10"
+          />
+        </div>
 
-      <div class="w-full lg:w-1/2 text-left lg:text-right flex flex-col items-start lg:items-end">
-        <h2
-          class="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight"
-          set:html={title2}
-        />
-        <p class="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed mb-6">
-          {description2}
-        </p>
-        <div class="w-12 h-1 bg-yellow-500 rounded-full"></div>
+        <div class="w-full lg:w-1/2 text-left lg:text-right flex flex-col items-start lg:items-end">
+          <h2
+            class="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight"
+            set:html={title2}
+          />
+          <p class="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed mb-6">
+            {description2}
+          </p>
+          <div class="w-12 h-1 bg-yellow-400 rounded-full"></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>

@@ -17,7 +17,7 @@ export default defineConfig({
 
   site: 'https://panjandrum.hu', // KÖTELEZŐ, e nélkül nem generál semmit
   integrations: [
-    alpinejs(),
+    alpinejs({ entrypoint: '/src/entrypoint' }),
     robotsTxt(),
     sitemap(),
     (await import('@playform/compress')).default(),

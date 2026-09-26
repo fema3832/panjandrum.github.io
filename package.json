@@ -12,6 +12,7 @@
     "depcheck": "pnpm dlx depcheck"
   },
   "dependencies": {
+    "@alpinejs/intersect": "^3.17.4",
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/sitemap": "^3.7.4",
     "@playform/compress": "^0.2.5",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@types/alpinejs__intersect": "^3.13.4",
     "prettier": "^3.9.8",
     "prettier-plugin-astro": "^1.0.1",
     "typescript": "^6.0.3"

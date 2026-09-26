@@ -20,3 +20,33 @@ html {
   font-optical-sizing: auto;
   scroll-behavior: smooth;
 }
+
+@keyframes fade-out-blur {
+  to {
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+@keyframes fade-in-blur {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+::view-transition-old(root) {
+  animation: 0.35s ease-out both fade-out-blur;
+}
+
+::view-transition-new(root) {
+  animation: 0.35s ease-out both fade-in-blur;
+}
+
+body {
+  overflow-x: hidden;
+}

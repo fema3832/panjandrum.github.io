@@ -31,7 +31,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
 
   <!-- ESZKÖZPARK BÖNGÉSZŐ -->
   <section
-    class="bg-linear-to-t from-transparent to-yellow-500/50 text-white pb-16 sm:pb-24"
+    class="bg-linear-to-t from-transparent to-yellow-400/50 text-white py-12 sm:py-16 md:py-20"
     id="tech"
   >
     <div
@@ -48,27 +48,27 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                     }, 200);
                 }
             }"
-      class="max-w-6xl mx-auto px-4"
+      class="max-w-7xl mx-auto px-4"
     >
       <!-- TAB SÁV -->
       <div class="grid grid-cols-1 sm:grid-cols-3 border-yellow-400 border-2 text-[11px] sm:text-xs uppercase tracking-wider bg-neutral-900/50">
         <button
           @click="switchTab('mozgofej')"
-          :class="tab === 'mozgofej' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
+          :class="tab === 'mozgofej' ? 'bg-yellow-400 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
           class="px-4 py-3 text-left md:text-lg text-md cursor-pointer transition-colors duration-150"
         >
           Mozgófejek & Pult
         </button>
         <button
           @click="switchTab('par')"
-          :class="tab === 'par' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
+          :class="tab === 'par' ? 'bg-yellow-400 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
           class="px-4 py-3 text-left md:text-lg text-md cursor-pointer transition-colors duration-150"
         >
           Blinder & LED Par
         </button>
         <button
           @click="switchTab('effekt')"
-          :class="tab === 'effekt' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
+          :class="tab === 'effekt' ? 'bg-yellow-400 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
           class="px-4 py-3 text-left md:text-lg text-md cursor-pointer transition-colors duration-150"
         >
           Effekt & Lézer
@@ -100,7 +100,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Shehds"
                 class="h-5 w-auto object-contain brightness-0 invert mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>Shehds 19x15 Wash/Zoom</span>
                   <span class="text-neutral-500">Mozgófej</span>
@@ -113,7 +113,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Involight"
                 class="h-5 w-auto object-contain brightness-0 invert mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>Involight LEDMH50S</span>
                   <span class="text-neutral-500">Spot</span>
@@ -126,7 +126,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Light4Me"
                 class="h-8 w-auto object-contain mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>Light4Me Focus 150</span>
                   <span class="text-neutral-500">Beam</span>
@@ -135,7 +135,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
             </div>
             <div>
               <h3 class="font-bold text-xl sm:text-2xl mb-1">Beam</h3>
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>Beam 230</span>
                   <span class="text-neutral-500">Beam</span>
@@ -148,7 +148,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Chamsys"
                 class="h-8 w-auto object-contain mb-3 invert-100"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>Chamsys MagicQ Compact Connect</span>
                   <span class="text-neutral-500">Wing</span>
@@ -159,7 +159,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
               <h3 class="font-bold text-xl sm:text-2xl mb-1">
                 Pult & Tartozék
               </h3>
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>Lenovo ThinkCentre & 27" Touchscreen</span>
                   <span class="text-neutral-500">Gép</span>
@@ -184,7 +184,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Shehds"
                 class="h-5 w-auto object-contain brightness-0 invert mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>Shehds 2Eyes 200W CW/WW</span>
                   <span class="text-neutral-500">Blinder</span>
@@ -197,7 +197,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Involight"
                 class="h-5 w-auto object-contain brightness-0 invert mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>Involight Ledpar12HEX</span>
                   <span class="text-neutral-500">Par</span>
@@ -214,13 +214,13 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
           >
             <div>
               <h3 class="font-bold text-xl sm:text-2xl mb-1">Effekt fény</h3>
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li>Spider DJ Light</li>
               </ul>
             </div>
             <div>
               <h3 class="font-bold text-xl sm:text-2xl mb-1">Lézer</h3>
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>Lézer</span>
                   <span class="text-neutral-500">1W</span>

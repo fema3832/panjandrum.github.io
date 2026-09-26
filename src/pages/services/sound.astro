@@ -30,7 +30,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
   />
 
   <!-- ESZKÖZPARK BÖNGÉSZŐ -->
-  <section class="bg-linear-to-t from-transparent to-yellow-500/50 text-white pb-16 sm:pb-24">
+  <section class="bg-linear-to-t from-transparent to-yellow-400/50 text-white py-12 sm:py-16 md:py-20">
     <div
       x-data="{
                 tab: 'hangfalak',
@@ -45,27 +45,27 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                     }, 200);
                 }
             }"
-      class="max-w-6xl mx-auto px-4"
+      class="max-w-7xl mx-auto px-4"
     >
       <!-- TAB SÁV -->
       <div class="grid grid-cols-1 sm:grid-cols-3 border-yellow-400 border-2 text-[11px] sm:text-xs uppercase tracking-wider bg-neutral-900/50">
         <button
           @click="switchTab('hangfalak')"
-          :class="tab === 'hangfalak' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
+          :class="tab === 'hangfalak' ? 'bg-yellow-400 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
           class="px-4 py-3 text-left md:text-lg text-md cursor-pointer transition-colors duration-150 uppercase font-semibold"
         >
           Hangfalak
         </button>
         <button
           @click="switchTab('keverok')"
-          :class="tab === 'keverok' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
+          :class="tab === 'keverok' ? 'bg-yellow-400 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
           class="px-4 py-3 text-left md:text-lg text-md cursor-pointer transition-colors duration-150 uppercase font-semibold"
         >
           Keverőpultok & Stagebox
         </button>
         <button
           @click="switchTab('mikrofonok')"
-          :class="tab === 'mikrofonok' ? 'bg-yellow-500 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
+          :class="tab === 'mikrofonok' ? 'bg-yellow-400 text-neutral-900' : 'text-slate-200 hover:text-yellow-400'"
           class="px-4 py-3 text-left md:text-lg text-md cursor-pointer transition-colors duration-150 uppercase font-semibold"
         >
           Mikrofonok
@@ -97,7 +97,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="RCF"
                 class="h-11 w-auto object-contain brightness-0 invert mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>RCF HDL-20A</span>
                   <span class="text-neutral-500">Line Array</span>
@@ -123,7 +123,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="HK Audio"
                 class="h-12 w-auto object-contain mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>HK Audio Polar 12</span>
                   <span class="text-neutral-500">Oszlopsugárzó</span>
@@ -136,7 +136,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Electro-Voice"
                 class="h-7 w-auto object-contain brightness-0 invert mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>Electro-Voice ZLX széria</span>
                   <span class="text-neutral-500">Aktív</span>
@@ -149,7 +149,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="dB Technologies"
                 class="h-7 w-auto object-contain brightness-0 invert mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li class="flex justify-between gap-4">
                   <span>dB Technologies Opera széria</span>
                   <span class="text-neutral-500">Aktív</span>
@@ -174,7 +174,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Behringer"
                 class="h-6 w-auto object-contain mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li>Behringer Wing Compact</li>
               </ul>
             </div>
@@ -184,7 +184,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Soundcraft"
                 class="h-6 w-auto object-contain brightness-0 invert mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li>Soundcraft Si Expression 3</li>
                 <li>Soundcraft UI24 / UI12</li>
               </ul>
@@ -195,7 +195,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Yamaha"
                 class="h-7 w-auto object-contain mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li>Yamaha DM3S</li>
               </ul>
             </div>
@@ -205,7 +205,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Allen & Heath"
                 class="h-5 w-auto object-contain mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li>Allen & Heath ZED széria</li>
               </ul>
             </div>
@@ -215,7 +215,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Soundsation"
                 class="h-8 w-auto object-contain mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li>SoundSation MIOMIX széria</li>
               </ul>
               <p class="text-sm text-neutral-500 italic mt-4">
@@ -226,7 +226,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
               <h3 class="font-bold text-xl sm:text-2xl mb-1">
                 Csoportkábel/Stagebox
               </h3>
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li>Behringer S16 Stagebox - 2x</li>
                 <li>32/16 Analog csoportkábel</li>
               </ul>
@@ -245,7 +245,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Shure"
                 class="h-10 w-auto object-contain brightness-0 invert mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li>Shure SM & Beta széria</li>
                 <li>Shure SLXD</li>
                 <li>Shure BLX</li>
@@ -257,7 +257,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="AKG"
                 class="h-10 w-auto object-contain brightness-0 invert mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li>AKG WMS</li>
                 <li>AKG C1000 (OG)</li>
               </ul>
@@ -268,19 +268,19 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="Sennheiser"
                 class="h-10 w-auto object-contain brightness-0 invert mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li>Sennheiser E600 Dobszett</li>
               </ul>
             </div>
             <!-- <div>
                             <Image src={logo("beyerdynamic")} alt="beyerdynamic" class="h-5 w-auto object-contain brightness-0 invert mb-3" />
-                            <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                            <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                                 <li>Vezetékes mikrofonok</li>
                             </ul>
                         </div> -->
             <!-- <div>
                             <Image src={logo("audio-technica")} alt="Audio-Technica" class="h-9 w-auto object-contain brightness-0 invert mb-3" />
-                            <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+                            <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                                 <li>Vezetékes mikrofonok</li>
                             </ul>
                         </div> -->
@@ -290,7 +290,7 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
                 alt="sE Electronics"
                 class="h-10 w-auto object-contain mb-3"
               />
-              <ul class="text-base sm:text-lg text-neutral-300 space-y-2 mt-3">
+              <ul class="text-sm sm:text-base lg:text-lg text-neutral-300 space-y-2 mt-3">
                 <li>sE Electronics V7</li>
                 <li>sE Electronics V7 Vintage</li>
               </ul>

@@ -15,6 +15,10 @@ import '../styles/global.css';
     <ClientRouter />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <!-- Előzetes kapcsolat a Google Fonts CDN-hez, hogy a betűtípus
+         betöltése ne lassítsa az első festést (LCP). -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <AstroFont
       config={[
         {
@@ -103,12 +107,20 @@ import '../styles/global.css';
       }}
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <!-- A háttérvideó poster képe a legnagyobb, látható felületi elem (LCP),
+         ezért előre betöltjük: így nem kell megvárni a CSS feldolgozását. -->
+    <link
+      rel="preload"
+      as="image"
+      href="/videos/background.webp"
+      fetchpriority="high"
+    />
 
     <style is:global>
-      img:not([src$='.svg']) {
+      img:not([src$='.svg']):not([data-no-skeleton]) {
         background-color: #262626;
       }
-      img:not([src$='.svg']):not(.is-loaded) {
+      img:not([src$='.svg']):not([data-no-skeleton]):not(.is-loaded) {
         animation: skeleton-pulse 1.6s ease-in-out infinite;
       }
       @keyframes skeleton-pulse {
@@ -123,19 +135,51 @@ import '../styles/global.css';
     </style>
 
     <script>
+      const SKELETON_IMG_SELECTOR =
+        "img:not([src$='.svg']):not([data-no-skeleton])";
+
       function trackImageLoad(img: HTMLImageElement) {
-        if (img.complete) {
-          img.classList.add('is-loaded');
-        } else {
-          img.addEventListener('load', () => img.classList.add('is-loaded'), {
-            once: true,
-          });
+        if (img.dataset.skeletonTracked === 'true') return;
+        img.dataset.skeletonTracked = 'true';
+
+        const markLoaded = () => img.classList.add('is-loaded');
+
+        // naturalWidth > 0 is required: an <img> with no src yet (or a broken
+        // one) still reports complete === true, which would hide the skeleton
+        // before anything was actually rendered.
+        if (img.complete && img.naturalWidth > 0) {
+          markLoaded();
+          return;
         }
+
+        img.addEventListener('load', markLoaded, { once: true });
+        // Never pulse forever on a 404.
+        img.addEventListener('error', markLoaded, { once: true });
       }
 
-      document
-        .querySelectorAll<HTMLImageElement>("img:not([src$='.svg'])")
-        .forEach(trackImageLoad);
+      function trackImagesIn(root: ParentNode) {
+        root
+          .querySelectorAll<HTMLImageElement>(SKELETON_IMG_SELECTOR)
+          .forEach(trackImageLoad);
+      }
+
+      // Re-scan on the first load AND after every <ClientRouter /> navigation.
+      // Without this the script only ever runs once, so images injected by
+      // client-side navigation keep pulsing forever even though they loaded.
+      document.addEventListener('astro:page-load', () => trackImagesIn(document));
+
+      trackImagesIn(document);
+
+      // Catch images added later by Alpine (e.g. the reference lightbox).
+      new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+          mutation.addedNodes.forEach((node) => {
+            if (!(node instanceof Element)) return;
+            if (node instanceof HTMLImageElement) trackImageLoad(node);
+            trackImagesIn(node);
+          });
+        }
+      }).observe(document.documentElement, { childList: true, subtree: true });
     </script>
   </head>
   <body class="flex flex-col min-h-screen bg-neutral-900 glass">

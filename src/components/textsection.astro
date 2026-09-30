@@ -10,6 +10,8 @@ interface Props {
   description2?: string;
   img1?: ImageMetadata;
   img2?: ImageMetadata;
+  alt1?: string;
+  alt2?: string;
 }
 
 const {
@@ -19,6 +21,8 @@ const {
   description2 = 'Default description text2.',
   img1 = defaultImg,
   img2 = defaultImg,
+  alt1 = 'Rendezvénytechnikai eszköz',
+  alt2 = 'Rendezvénytechnikai eszköz',
 } = Astro.props;
 ---
 
@@ -30,12 +34,22 @@ const {
           <div class="absolute -inset-4 bg-yellow-400/20 rounded-xl blur-2xl"></div>
           <Image
             src={img1}
-            alt="Technikai eszköz 1"
+            alt={alt1}
+            widths={[500, 800, 1100]}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={50}
             class="relative rounded-2xl border border-neutral-800 w-full object-cover h-55 sm:h-80 lg:h-112.5 shadow-2xl shadow-yellow-900/10"
           />
         </div>
 
         <div class="w-full lg:w-1/2">
+          <!--
+            FIGYELMEZTETÉS: a title1/title2 props set:html-lal (nem escapelt
+            HTML) jönnek be. Ez a projektben csak hardcode-olt, saját
+            szerkesztői tartalomból táplálkozik (lásd: index.astro, about.astro).
+            Ha valaha felhasználói/CMS-ből érkező adat kerül ide, a set:html
+            helyett sima szöveges kiírásra kell cserélni (XSS kockázat).
+          -->
           <h2
             class="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight"
             set:html={title1}
@@ -56,7 +70,10 @@ const {
           <div class="absolute -inset-4 bg-yellow-400/10 rounded-xl blur-2xl"></div>
           <Image
             src={img2}
-            alt="Technikai eszköz 2"
+            alt={alt2}
+            widths={[500, 800, 1100]}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={50}
             class="relative rounded-2xl border border-neutral-800 w-full object-cover h-55 sm:h-80 lg:h-112.5 shadow-2xl shadow-yellow-900/10"
           />
         </div>

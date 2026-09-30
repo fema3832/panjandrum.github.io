@@ -31,29 +31,37 @@ import chamsys_visualizer from '../assets/chamsys_visualizer.png';
     <div class="relative flex-col w-full flex items-center justify-center pt-12 md:pt-24">
       <div class="container mx-auto px-4 text-white max-w-6xl w-full">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 md:gap-6 w-full">
-          <!-- 4. KÁRTYA -->
+          <!-- 4. KÃRTYA -->
           <div class="relative overflow-hidden lg:col-span-2 shadow-lg shadow-yellow-900/10 border-2 border-yellow-400">
             <a href="/about/" class="group block">
               <Image
                 src={about}
                 width={800}
                 height={600}
+                widths={[400, 600, 800]}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                quality={50}
                 alt=""
+                loading="eager"
+                fetchpriority="high"
                 class="aspect-video w-full object-cover block brightness-60 group-hover:brightness-90 transition-all duration-200"
               />
               <h2 class="absolute bottom-0 left-0 m-0 text-white font-bold text-2xl leading-tight wrap-break-word px-3 py-3 w-full bg-neutral-900/50 tracking-wider uppercase group-hover:text-yellow-400 transition-all duration-200">
-                Rólunk
+                RÃ³lunk
               </h2>
             </a>
           </div>
 
-          <!-- 5. KÁRTYA -->
+          <!-- 5. KÃRTYA -->
           <div class="relative overflow-hidden lg:col-span-2 shadow-lg shadow-yellow-900/10 border-2 border-yellow-400">
             <a href="/reference/" class="group block">
               <Image
                 src={reference}
                 width={800}
                 height={600}
+                widths={[400, 600, 800]}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                quality={50}
                 alt=""
                 class="aspect-video w-full object-cover block brightness-60 group-hover:brightness-90 transition-all duration-200"
               />
@@ -63,13 +71,16 @@ import chamsys_visualizer from '../assets/chamsys_visualizer.png';
             </a>
           </div>
 
-          <!-- 6. KÁRTYA -->
+          <!-- 6. KÃRTYA -->
           <div class="relative overflow-hidden lg:col-span-2 shadow-lg shadow-yellow-900/10 border-2 border-yellow-400">
             <a href="/contact/" class="group block">
               <Image
                 src={contact}
                 width={800}
                 height={600}
+                widths={[400, 600, 800]}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                quality={50}
                 alt=""
                 class="aspect-video w-full object-cover block brightness-60 group-hover:brightness-90 transition-all duration-200"
               />
@@ -79,13 +90,16 @@ import chamsys_visualizer from '../assets/chamsys_visualizer.png';
             </a>
           </div>
 
-          <!-- 1. KÁRTYA -->
+          <!-- 1. KÃRTYA -->
           <div class="relative overflow-hidden lg:col-span-2 shadow-lg shadow-yellow-900/10 border-2 border-yellow-400">
             <a href="/services/sound/" class="group block">
               <Image
                 src={sound}
                 width={800}
                 height={600}
+                widths={[400, 600, 800]}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                quality={50}
                 alt=""
                 class="aspect-video w-full object-cover block brightness-60 group-hover:brightness-90 transition-all duration-200"
               />
@@ -95,34 +109,40 @@ import chamsys_visualizer from '../assets/chamsys_visualizer.png';
             </a>
           </div>
 
-          <!-- 2. KÁRTYA -->
+          <!-- 2. KÃRTYA -->
           <div class="relative overflow-hidden lg:col-span-2 shadow-lg shadow-yellow-900/10 border-2 border-yellow-400">
             <a href="/services/light/" class="group block">
               <Image
                 src={light}
                 width={800}
                 height={600}
+                widths={[400, 600, 800]}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                quality={50}
                 alt=""
                 class="aspect-video w-full object-cover block brightness-60 group-hover:brightness-90 transition-all duration-200"
               />
               <h2 class="absolute bottom-0 left-0 m-0 text-white font-bold text-2xl leading-tight wrap-break-word px-3 py-3 w-full bg-neutral-900/50 tracking-wider uppercase group-hover:text-yellow-400 transition-all duration-200">
-                Fénytechnika
+                FÃ©nytechnika
               </h2>
             </a>
           </div>
 
-          <!-- 3. KÁRTYA -->
+          <!-- 3. KÃRTYA -->
           <div class="relative overflow-hidden lg:col-span-2 shadow-lg shadow-yellow-900/10 border-2 border-yellow-400">
             <a href="/services/video/" class="group block">
               <Image
                 src={video}
                 width={800}
                 height={600}
+                widths={[400, 600, 800]}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                quality={50}
                 alt=""
                 class="aspect-video w-full object-cover block brightness-60 group-hover:brightness-90 transition-all duration-200"
               />
               <h2 class="absolute bottom-0 left-0 m-0 text-white font-bold text-2xl leading-tight wrap-break-word px-3 py-3 w-full bg-neutral-900/50 tracking-wider uppercase group-hover:text-yellow-400 transition-all duration-200">
-                Vetítéstechnika
+                VetÃ­tÃ©stechnika
               </h2>
             </a>
           </div>
@@ -137,7 +157,7 @@ import chamsys_visualizer from '../assets/chamsys_visualizer.png';
         <div
           class="bg-neutral-900/90 border-2 border-yellow-400 p-6 md:p-8 flex flex-col items-center justify-center text-center min-h-35"
           x-data="{ count: 0, target: 12 }"
-          x-intersect.once="let start = null; function step(ts){ if(!start) start = ts; let progress = Math.min((ts - start) / 1500, 1); count = Math.floor(progress * target); if (progress < 1) requestAnimationFrame(step); else count = target; } requestAnimationFrame(step);"
+          x-intersect.once="if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { count = target; return; } let start = null; function step(ts){ if(!start) start = ts; let progress = Math.min((ts - start) / 1500, 1); count = Math.floor(progress * target); if (progress < 1) requestAnimationFrame(step); else count = target; } requestAnimationFrame(step);"
         >
           <p
             class="text-2xl sm:text-3xl lg:text-5xl font-bold text-yellow-400 leading-none"
@@ -146,14 +166,14 @@ import chamsys_visualizer from '../assets/chamsys_visualizer.png';
             0+
           </p>
           <p class="mt-3 text-sm sm:text-base lg:text-lg uppercase tracking-wider text-neutral-300">
-            Év tapasztalat
+            Ã‰v tapasztalat
           </p>
         </div>
 
         <div
           class="bg-neutral-900/90 border-2 border-yellow-400 p-6 md:p-8 flex flex-col items-center justify-center text-center min-h-35"
           x-data="{ count: 0, target: 120 }"
-          x-intersect.once="let start = null; function step(ts){ if(!start) start = ts; let progress = Math.min((ts - start) / 1500, 1); count = Math.floor(progress * target); if (progress < 1) requestAnimationFrame(step); else count = target; } requestAnimationFrame(step);"
+          x-intersect.once="if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { count = target; return; } let start = null; function step(ts){ if(!start) start = ts; let progress = Math.min((ts - start) / 1500, 1); count = Math.floor(progress * target); if (progress < 1) requestAnimationFrame(step); else count = target; } requestAnimationFrame(step);"
         >
           <p
             class="text-2xl sm:text-3xl lg:text-5xl font-bold text-yellow-400 leading-none"
@@ -162,14 +182,14 @@ import chamsys_visualizer from '../assets/chamsys_visualizer.png';
             0+
           </p>
           <p class="mt-3 text-sm sm:text-base lg:text-lg uppercase tracking-wider text-neutral-300">
-            Lebonyolított rendezvény
+            LebonyolÃ­tott rendezvÃ©ny
           </p>
         </div>
 
         <div
           class="bg-neutral-900/90 border-2 border-yellow-400 p-6 md:p-8 flex flex-col items-center justify-center text-center min-h-35"
           x-data="{ count: 0, target: 50 }"
-          x-intersect.once="let start = null; function step(ts){ if(!start) start = ts; let progress = Math.min((ts - start) / 1500, 1); count = Math.floor(progress * target); if (progress < 1) requestAnimationFrame(step); else count = target; } requestAnimationFrame(step);"
+          x-intersect.once="if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { count = target; return; } let start = null; function step(ts){ if(!start) start = ts; let progress = Math.min((ts - start) / 1500, 1); count = Math.floor(progress * target); if (progress < 1) requestAnimationFrame(step); else count = target; } requestAnimationFrame(step);"
         >
           <p
             class="text-2xl sm:text-3xl lg:text-5xl font-bold text-yellow-400 leading-none"
@@ -178,14 +198,14 @@ import chamsys_visualizer from '../assets/chamsys_visualizer.png';
             0+
           </p>
           <p class="mt-3 text-sm sm:text-base lg:text-lg uppercase tracking-wider text-neutral-300">
-            Helyszín
+            HelyszÃ­n
           </p>
         </div>
 
         <div
           class="bg-neutral-900/90 border-2 border-yellow-400 p-6 md:p-8 flex flex-col items-center justify-center text-center min-h-35"
           x-data="{ count: 0, target: 3 }"
-          x-intersect.once="let start = null; function step(ts){ if(!start) start = ts; let progress = Math.min((ts - start) / 1500, 1); count = Math.floor(progress * target); if (progress < 1) requestAnimationFrame(step); else count = target; } requestAnimationFrame(step);"
+          x-intersect.once="if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { count = target; return; } let start = null; function step(ts){ if(!start) start = ts; let progress = Math.min((ts - start) / 1500, 1); count = Math.floor(progress * target); if (progress < 1) requestAnimationFrame(step); else count = target; } requestAnimationFrame(step);"
         >
           <p
             class="text-2xl sm:text-3xl lg:text-5xl font-bold text-yellow-400 leading-none"
@@ -194,7 +214,7 @@ import chamsys_visualizer from '../assets/chamsys_visualizer.png';
             0
           </p>
           <p class="mt-3 text-sm sm:text-base lg:text-lg uppercase tracking-wider text-neutral-300">
-            Szolgáltatási terület
+            SzolgÃ¡ltatÃ¡si terÃ¼let
           </p>
         </div>
       </div>
@@ -203,13 +223,15 @@ import chamsys_visualizer from '../assets/chamsys_visualizer.png';
 
   <section class="py-12 sm:py-16 md:py-20">
     <TextSection
-      title1={`Pontos lefedettség <span class="text-yellow-400">Ease Focus szoftverrel</span>`}
-      description1="Rendezvény előtt Ease Focus szoftverrel megtervezzük a hangsugárzók elhelyezését és lefedettségét. Így már előre pontosan tudjuk, hogyan szól majd a hangzás a nézőtér minden pontján, ami gyorsabbá és pontosabbá teszi a helyszíni beüzemelést."
+      title1={`Pontos lefedettsÃ©g <span class="text-yellow-400">Ease Focus szoftverrel</span>`}
+      description1="RendezvÃ©ny elÅ‘tt Ease Focus szoftverrel megtervezzÃ¼k a hangsugÃ¡rzÃ³k elhelyezÃ©sÃ©t Ã©s lefedettsÃ©gÃ©t. Ãgy mÃ¡r elÅ‘re pontosan tudjuk, hogyan szÃ³l majd a hangzÃ¡s a nÃ©zÅ‘tÃ©r minden pontjÃ¡n, ami gyorsabbÃ¡ Ã©s pontosabbÃ¡ teszi a helyszÃ­ni beÃ¼zemelÃ©st."
       img1={ease_focus}
+      alt1="Az Ease Focus szoftverrel kÃ©szÃ­tett hangsugÃ¡rzÃ³ lefedettsÃ©gi terv a rendezvÃ©ny helyszÃ­nÃ©n"
 
-      title2={`Fényvilág <span class="text-yellow-400">leszimulálása</span> rendezvény előtt`}
-      description2="ChamSys MagicQ szoftverrel a fényvilágot már a helyszínre érkezés előtt megtervezzük és leteszteljük. Így a rendezvény napján minden fény pontosan úgy mozog és világít, ahogyan azt előre megterveztük."
+      title2={`FÃ©nyvilÃ¡g <span class="text-yellow-400">leszimulÃ¡lÃ¡sa</span> rendezvÃ©ny elÅ‘tt`}
+      description2="ChamSys MagicQ szoftverrel a fÃ©nyvilÃ¡got mÃ¡r a helyszÃ­nre Ã©rkezÃ©s elÅ‘tt megtervezzÃ¼k Ã©s leteszteljÃ¼k. Ãgy a rendezvÃ©ny napjÃ¡n minden fÃ©ny pontosan Ãºgy mozog Ã©s vilÃ¡gÃ­t, ahogyan azt elÅ‘re megterveztÃ¼k."
       img2={chamsys_visualizer}
+      alt2="A ChamSys MagicQ szoftverrel megtervezett fÃ©nyvilÃ¡gÃ­tÃ¡s program"
     />
   </section>
 
@@ -217,8 +239,8 @@ import chamsys_visualizer from '../assets/chamsys_visualizer.png';
     <div class="container mx-auto px-4 max-w-4xl text-center">
       <div class="w-12 h-1 bg-yellow-400 rounded-full mx-auto mb-8"></div>
       <p class="text-white font-bold text-xl md:text-3xl lg:text-4xl leading-snug">
-        Korszerű hang- és fénytechnikával, valamint páratlan, teljes körű
-        kiszolgálással váltjuk valóra partnereink elképzeléseit.
+        KorszerÅ± hang- Ã©s fÃ©nytechnikÃ¡val, valamint pÃ¡ratlan, teljes kÃ¶rÅ±
+        kiszolgÃ¡lÃ¡ssal vÃ¡ltjuk valÃ³ra partnereink elkÃ©pzelÃ©seit.
       </p>
       <div class="w-12 h-1 bg-yellow-400 rounded-full mx-auto mt-8"></div>
     </div>

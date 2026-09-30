@@ -22,6 +22,10 @@ const imageGallery = Object.entries(imageFiles).map(([path, img]) => {
     asset: img, // Az Astro <Image /> számára
     photo: img.src, // Az Alpine modal számára
     alt: formattedTitle,
+    // A natív méretek átadása a lightbox <img>-nek, hogy a böngésző
+    // fenntartsa a helyet (CLS) már a betöltés előtt is.
+    width: img.width,
+    height: img.height,
   };
 });
 ---
@@ -41,7 +45,7 @@ const imageGallery = Object.entries(imageFiles).map(([path, img]) => {
       x-data={`{
           activeIndex: null,
           loaded: false,
-          images: ${JSON.stringify(imageGallery.map((i) => ({ photo: i.photo, alt: i.alt })))},
+          images: ${JSON.stringify(imageGallery.map((i) => ({ photo: i.photo, alt: i.alt, width: i.width, height: i.height })))},
           open(index) {
             this.loaded = false;
             this.activeIndex = index;
@@ -110,6 +114,7 @@ const imageGallery = Object.entries(imageFiles).map(([path, img]) => {
       <!-- BÖNGÉSZŐ NATÍV DIALOG MODAL -->
       <dialog
         x-ref="dialog"
+        aria-label="Referencia galéria"
         @click="if ($event.target ===$el) close()"
         @cancel.prevent="close()"
         class="bg-transparent border-0 p-0 m-auto max-w-none max-h-none w-screen h-screen backdrop:bg-slate-950/80 backdrop:backdrop-blur-md overflow-hidden focus:outline-none select-none transition-all duration-200"
@@ -174,8 +179,12 @@ const imageGallery = Object.entries(imageFiles).map(([path, img]) => {
             <template x-if="activeIndex !== null">
               <img
                 x-ref="modalImg"
-                :src="images[activeIndex]?.photo"
+                data-no-skeleton
+                alt=""
                 :alt="images[activeIndex]?.alt"
+                :width="images[activeIndex]?.width"
+                :height="images[activeIndex]?.height"
+                :src="images[activeIndex]?.photo"
                 @load="loaded = true"
                 :class="loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'"
                 class="object-contain max-h-[88vh] max-w-[92vw] w-auto h-auto shadow-2xl transition-all duration-200 ease-out"

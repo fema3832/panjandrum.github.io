@@ -1,0 +1,16 @@
+# A magyar ékezetes karakterek miatt kötelező: minden szövegfájl UTF-8 legyen.
+# A charset beállítás nélkül egy Windows PowerShell-os átírás (Get-Content /
+# Set-Content) elcsúsztatja az ékezeteket, ahogy 2026-09-30-án történt.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+# A Markdown-ben a két trailing space sortörést jelöl, ezt nem vágjuk le
+trim_trailing_whitespace = false

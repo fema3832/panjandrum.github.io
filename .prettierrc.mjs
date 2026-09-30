@@ -9,6 +9,10 @@ export default {
       },
     },
   ],
+  // A munkafában Windowson a git CRLF sorvégeket hoz létre, a repóban viszont
+  // LF van. Az 'auto' megőrzi, ami épp a fájlban található, így a `pnpm format`
+  // nem írja át az egész projektet minden sorvég miatt.
+  endOfLine: 'auto',
   // Tetszőleges saját szabályok:
   semi: true,
   singleQuote: true,

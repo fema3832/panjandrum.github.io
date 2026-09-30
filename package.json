@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write \".\"",
-    "check": "pnpm astro check",
+    "check": "pnpm astro check && pnpm check:encoding",
+    "check:encoding": "node scripts/check-encoding.mjs",
     "depcheck": "pnpm dlx depcheck"
   },
   "dependencies": {

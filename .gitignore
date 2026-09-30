@@ -1,5 +1,6 @@
 /.git
 /.vscode
 /.astro
+/.astro-doctor
 /node_modules
 /dist

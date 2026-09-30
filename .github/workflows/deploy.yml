@@ -44,6 +44,12 @@ jobs:
         run: pnpm install --frozen-lockfile
         working-directory: ${{ env.BUILD_PATH }}
 
+      # Elcsúszott (dupla kódolásból származó) karakterek ellenőrzése, hogy
+      # rossz szöveggel ne kerüljön kiadásra az oldal.
+      - name: Check encoding
+        run: pnpm check:encoding
+        working-directory: ${{ env.BUILD_PATH }}
+
       - name: Build with Astro
         run: |
           pnpm exec astro build \

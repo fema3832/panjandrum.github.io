@@ -14,26 +14,27 @@ const logo = (name: string) => logoFiles[`/src/assets/logo/${name}.svg`];
 ---
 
 <Layout>
-  <section class="w-full relative flex items-center justify-center overflow-hidden bg-linear-to-t from-transparent to-yellow-400/50 min-h-[calc(100dvh-60px)]">
-    <div class="relative container mx-auto px-4 text-center text-white max-w-4xl">
-      <div class="mb-4 sm:mb-5 flex justify-center items-center">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-200 leading-tight">
-          Több mint <span class="text-yellow-400">30 év</span>{' '}
-          rendezvénytechnika
-        </h1>
-      </div>
+  <section class="w-full relative flex flex-col justify-center overflow-hidden bg-linear-to-t from-transparent to-yellow-400/50 h-[calc(100dvh-60px)]">
+    <!-- HERÓ BLOKK – lásd a hero.astro magyarázatát. -->
+    <div class="hero-block relative flex flex-col">
+      <div class="relative container mx-auto px-4 text-center text-white max-w-4xl">
+        <div class="mb-4 sm:mb-5 flex justify-center items-center">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-200 leading-tight">
+            Több mint <span class="text-yellow-400">30 év</span>{' '}
+            rendezvénytechnika
+          </h1>
+        </div>
 
-      <p class="mx-auto font-semibold mb-8 sm:mb-10 max-w-2xl text-base sm:text-xl md:text-2xl text-slate-200">
-        <span>
-          1992 óta foglalkozunk hangosítással, fénytechnikával és rendezvények
-          teljes körű technikai megvalósításával.
-        </span>
-      </p>
-    </div>
-    <div class="absolute bottom-32 left-1/2 -translate-x-1/2 z-10">
+        <p class="mx-auto font-semibold mb-8 sm:mb-10 max-w-2xl text-base sm:text-xl md:text-2xl text-slate-200">
+          <span>
+            1992 óta foglalkozunk hangosítással, fénytechnikával és rendezvények
+            teljes körű technikai megvalósításával.
+          </span>
+        </p>
+      </div>
       <a
         href="#tech"
-        class="text-white/70 hover:text-yellow-400 transition-colors duration-200 animate-bounce block"
+        class="absolute left-1/2 -translate-x-1/2 top-full mt-8 sm:mt-10 z-10 text-white/70 hover:text-yellow-400 transition-colors duration-200 animate-bounce block"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

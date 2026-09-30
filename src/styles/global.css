@@ -51,6 +51,26 @@ body {
   overflow-x: hidden;
 }
 
+/* HERÓ: rövid kijelzőn a szöveg + nyíl blokk arányosan összezsugorodik, így a
+   szöveg középen marad és a nyíl is teljesen látszódik (a szakasz fix
+   magasságú, ezért nem tud megnőni). A `hero-block` osztályt a hero.astro,
+   a sectionhero.astro és az about.astro használja. */
+@media (max-height: 640px) {
+  .hero-block {
+    transform: scale(0.93);
+  }
+}
+@media (max-height: 540px) {
+  .hero-block {
+    transform: scale(0.85);
+  }
+}
+@media (max-height: 450px) {
+  .hero-block {
+    transform: scale(0.74);
+  }
+}
+
 /* Csökkentett mozgás esetén kikapcsoljuk a dekoratív, végtelen animációkat
    (skeleton pulzálás, számláló átlüktetés, lebegés). */
 @media (prefers-reduced-motion: reduce) {

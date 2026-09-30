@@ -166,7 +166,9 @@ import '../styles/global.css';
       // Re-scan on the first load AND after every <ClientRouter /> navigation.
       // Without this the script only ever runs once, so images injected by
       // client-side navigation keep pulsing forever even though they loaded.
-      document.addEventListener('astro:page-load', () => trackImagesIn(document));
+      document.addEventListener('astro:page-load', () =>
+        trackImagesIn(document)
+      );
 
       trackImagesIn(document);
 
